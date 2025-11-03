@@ -23,7 +23,7 @@ namespace P2FixAnAppDotNetCode.Tests
             var products = productService.GetAllProducts();
 
             //Assert.IsType<List<Product>>(products);
-            Assert.IsType<Product[]>(products);
+            Assert.IsType<List<Product>>(products);
 
         }
 
@@ -50,8 +50,7 @@ namespace P2FixAnAppDotNetCode.Tests
             //will simulate the process from the front end perspective
             //here testing that product stock values are decreasing for each cart checkout, not just a single time
             cart = new Cart();
-            productRepository = new ProductRepository();
-            productService = new ProductService(productRepository, orderRepository);
+            
             products = productService.GetAllProducts();
             cart.AddItem(products.Where(p => p.Id == 1).First(), 1);
             cart.AddItem(products.Where(p => p.Id == 3).First(), 2);
